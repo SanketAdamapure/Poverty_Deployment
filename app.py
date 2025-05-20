@@ -13,6 +13,10 @@ import numpy as np
 app = Flask(__name__)
 swagger = Swagger(app)
 
+@app.route('/')
+def index():
+    return 'API is running!', 200
+
 try:
     print("🔁 Loading model...")
     classifier = load_model("poverty_NN_model.h5")
