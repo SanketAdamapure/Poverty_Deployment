@@ -24,7 +24,7 @@ Jinja2==3.1.6
 joblib==1.5.0
 jsonschema==4.23.0
 jsonschema-specifications==2025.4.1
-keras==2.11.0
+keras==3.0.0
 libclang==18.1.1
 Markdown==3.8
 MarkupSafe==3.0.2
