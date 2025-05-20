@@ -19,7 +19,7 @@ def index():
 
 try:
     print("🔁 Loading model...")
-    classifier = load_model("poverty_NN_model.h5")
+    classifier = load_model("poverty_NN_model_V2.h5")
     print("✅ Model loaded.")
 except Exception as e:
     print("❌ Model loading failed:", e)
