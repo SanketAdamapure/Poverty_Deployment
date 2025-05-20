@@ -75,6 +75,10 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
-    print("🚀 Starting Flask server...")
-    app.run(debug=True, port=5000, use_reloader=False)  # Fix added here
+#if __name__ == '__main__':
+    #print("🚀 Starting Flask server...")
+    #app.run(debug=True, port=5000, use_reloader=False)  # Fix added here
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # default to 10000 if PORT not set
+    app.run(host="0.0.0.0", port=port)
+
