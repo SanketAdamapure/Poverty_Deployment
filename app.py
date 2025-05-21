@@ -68,8 +68,8 @@ def predict():
         pt_rural = float(request.args.get("pt_rural"))
         age = float(request.args.get("age"))
 
-        prediction = classifier.predict([[pop_chng, n_empld, tax_rate, pt_phone, pt_rural, age]])
-        print("✅ Prediction:", prediction)
+        input_data = np.array([[pop_chng, n_empld, tax_rate, pt_phone, pt_rural, age]], dtype=np.float32)
+        prediction = classifier.predict(input_data)
 
         return "Hello, the answer is " + str(prediction[0][0])
     except Exception as e:
