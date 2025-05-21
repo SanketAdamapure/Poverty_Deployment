@@ -74,6 +74,32 @@ def predict():
         return "Hello, the answer is " + str(prediction[0][0])
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+        
+@app.route('/predict_json', methods=['POST'])
+def predict_json():
+    """
+    Predict poverty status using JSON input
+    ---
+    parameters:
+      - name: x
+        in: body
+        required: true
+        schema:
+          type: array
+          items:
+            type: number
+    responses:
+      200:
+        description: Prediction result
+    """
+    try:
+        data = request.get_json()
+        x_input = np.array(data['x'])  # ✅ Convert to NumPy array
+        prediction = classifier.predict(x_input)
+        return jsonify({"prediction": prediction.tolist()})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 #if __name__ == '__main__':
     #print("🚀 Starting Flask server...")
