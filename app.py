@@ -68,10 +68,13 @@ def predict():
         pt_rural = float(request.args.get("pt_rural"))
         age = float(request.args.get("age"))
 
+        # ✅ Convert input to a NumPy array with proper shape
         input_data = np.array([[pop_chng, n_empld, tax_rate, pt_phone, pt_rural, age]], dtype=np.float32)
-        prediction = classifier.predict(input_data)
 
-        return "Hello, the answer is " + str(prediction[0][0])
+        prediction = classifier.predict(input_data)
+        result = float(prediction[0][0])  # Convert Tensor to plain float
+
+        return f"Hello, the answer is {result}"
     except Exception as e:
         return jsonify({"error": str(e)}), 500
         
